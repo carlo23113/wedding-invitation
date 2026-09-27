@@ -5,6 +5,7 @@
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   const body = document.body;
+  body.classList.add("is-locked");
   const curtain = document.getElementById("curtain");
 
   /* ---------- Split hero names into letters ---------- */

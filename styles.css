@@ -310,7 +310,7 @@ a {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1.4rem 5vw;
+  padding: calc(1.4rem + env(safe-area-inset-top, 0px)) 5vw 1.4rem;
   transform: translateY(-100%);
   opacity: 0;
   transition:
@@ -331,7 +331,7 @@ body.is-revealed .nav {
   background: rgba(255, 255, 255, 0.88);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  padding: 0.9rem 5vw;
+  padding: calc(0.9rem + env(safe-area-inset-top, 0px)) 5vw 0.9rem;
   box-shadow: 0 1px 0 rgba(11, 93, 69, 0.08);
   transition-delay: 0s !important;
 }
