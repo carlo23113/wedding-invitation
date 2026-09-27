@@ -900,6 +900,268 @@ body.is-revealed .hero__divider .leaf {
 }
 
 /* =========================================================
+   GALLERY
+   ========================================================= */
+.gallery {
+  background: var(--white);
+  padding-top: 2rem;
+}
+
+.gallery__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-auto-rows: 260px;
+  grid-auto-flow: dense;
+  gap: 14px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.photo {
+  position: relative;
+  overflow: hidden;
+  cursor: zoom-in;
+  background: var(--emerald-mist);
+}
+
+.photo--tall { grid-row: span 2; }
+.photo--wide { grid-column: span 2; }
+
+.photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: saturate(0.85);
+  transform: scale(1.25);
+  transition:
+    transform 1.6s var(--ease),
+    filter 0.8s ease;
+}
+
+.photo::after {
+  /* soft emerald wash that lifts on hover */
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 55%, rgba(6, 61, 45, 0.35));
+  transition: opacity 0.8s ease;
+}
+
+/* curtain-like wipe as each photo scrolls in */
+.reveal-photo {
+  clip-path: inset(100% 0 0 0);
+  transition: clip-path 1.4s var(--ease-in-out) var(--d, 0s);
+}
+
+.reveal-photo.is-visible {
+  clip-path: inset(0 0 0 0);
+}
+
+.reveal-photo.is-visible img {
+  transform: scale(1);
+  transition-delay: var(--d, 0s);
+}
+
+.photo.is-visible:hover img {
+  transform: scale(1.06);
+  filter: saturate(1.05);
+  transition-delay: 0s;
+}
+
+.photo:hover::after {
+  opacity: 0;
+}
+
+.photo:focus-visible {
+  outline: 1px solid var(--emerald);
+  outline-offset: 4px;
+}
+
+/* shown when a photo can't load */
+.photo.is-missing {
+  background:
+    radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.12), transparent 60%),
+    linear-gradient(145deg, var(--emerald-soft), var(--emerald-deep));
+  cursor: default;
+}
+
+.photo.is-missing img { display: none; }
+
+.photo.is-missing::after {
+  content: "C & A";
+  display: grid;
+  place-items: center;
+  background: none;
+  font-family: var(--serif);
+  font-size: 1.6rem;
+  letter-spacing: 0.2em;
+  color: rgba(246, 241, 228, 0.55);
+}
+
+/* =========================================================
+   PHOTO BAND
+   ========================================================= */
+.band {
+  position: relative;
+  height: 78vh;
+  min-height: 420px;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  background: linear-gradient(145deg, var(--emerald-soft), var(--emerald-dark));
+}
+
+.band__media {
+  position: absolute;
+  inset: -15% 0;
+  will-change: transform;
+}
+
+.band__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.band__media.is-missing img { display: none; }
+
+.band::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(4, 42, 31, 0.25), rgba(4, 42, 31, 0.6)),
+    rgba(11, 93, 69, 0.2);
+}
+
+.band__text {
+  position: relative;
+  z-index: 1;
+  color: var(--ivory);
+  padding: 0 1.5rem;
+}
+
+.band__script {
+  font-family: var(--script);
+  font-size: clamp(2.8rem, 8vw, 5.5rem);
+  line-height: 1.1;
+}
+
+.band__date {
+  margin-top: 1rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.5em;
+  opacity: 0.85;
+}
+
+/* =========================================================
+   LIGHTBOX
+   ========================================================= */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 500;
+  display: grid;
+  place-items: center;
+  padding: 4rem 4.5rem;
+  background: rgba(4, 42, 31, 0.94);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.lightbox.is-open { opacity: 1; }
+
+.lightbox__figure {
+  display: grid;
+  gap: 1rem;
+  justify-items: center;
+  max-width: 100%;
+  max-height: 100%;
+  transform: scale(0.94);
+  transition: transform 0.6s var(--ease);
+}
+
+.lightbox.is-open .lightbox__figure { transform: none; }
+
+.lightbox__figure img {
+  max-width: 100%;
+  max-height: calc(100vh - 11rem);
+  object-fit: contain;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
+  transition: opacity 0.35s ease;
+}
+
+.lightbox__figure img.is-swapping { opacity: 0; }
+
+.lightbox__figure figcaption {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1.15rem;
+  color: var(--ivory);
+  opacity: 0.85;
+}
+
+.lightbox__close {
+  position: absolute;
+  top: calc(1.4rem + env(safe-area-inset-top, 0px));
+  right: 1.4rem;
+  width: 40px;
+  height: 40px;
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+
+.lightbox__close span {
+  position: absolute;
+  left: 8px;
+  right: 8px;
+  top: 50%;
+  height: 1px;
+  background: var(--ivory);
+  transform: rotate(45deg);
+  transition: transform 0.4s var(--ease);
+}
+
+.lightbox__close span:last-child { transform: rotate(-45deg); }
+.lightbox__close:hover span { transform: rotate(135deg); }
+.lightbox__close:hover span:last-child { transform: rotate(45deg); }
+
+.lightbox__nav {
+  position: absolute;
+  top: 50%;
+  translate: 0 -50%;
+  width: 48px;
+  height: 48px;
+  border: 1px solid rgba(246, 241, 228, 0.35);
+  border-radius: 50%;
+  background: none;
+  color: var(--ivory);
+  font-size: 1.6rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: background 0.4s ease, color 0.4s ease;
+}
+
+.lightbox__nav:hover {
+  background: var(--ivory);
+  color: var(--emerald);
+}
+
+.lightbox__nav--prev { left: 1rem; }
+.lightbox__nav--next { right: 1rem; }
+
+.lightbox button:focus-visible {
+  outline: 1px solid var(--ivory);
+  outline-offset: 3px;
+}
+
+/* =========================================================
    DETAILS
    ========================================================= */
 .details {
@@ -1380,6 +1642,13 @@ body.is-revealed .hero__divider .leaf {
   }
 
   .details__grid { grid-template-columns: 1fr; }
+
+  .gallery__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-auto-rows: 180px; gap: 10px; }
+  .band { height: 60vh; min-height: 360px; }
+  .lightbox { padding: 4rem 1rem 6rem; }
+  .lightbox__nav { top: auto; bottom: 1.4rem; translate: none; }
+  .lightbox__nav--prev { left: calc(50% - 60px); }
+  .lightbox__nav--next { right: calc(50% - 60px); }
 
   .schedule__list li { gap: 2.4rem; }
   .schedule__list span { font-size: 1.25rem; }
