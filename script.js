@@ -30,13 +30,15 @@
   const openCurtain = () => {
     if (curtain.classList.contains("is-open")) return;
     curtain.classList.add("is-open");
+    if (window.VelvetCurtain) window.VelvetCurtain.open();
     body.classList.remove("is-locked");
     // Start the hero entrance while the curtain is sweeping aside
     setTimeout(() => body.classList.add("is-revealed"), reduceMotion ? 0 : 700);
     setTimeout(() => {
       curtain.classList.add("is-gone");
+      if (window.VelvetCurtain) window.VelvetCurtain.stop();
       startPetals();
-    }, reduceMotion ? 50 : 3000);
+    }, reduceMotion ? 50 : curtain.classList.contains("has-gl") ? 4100 : 3000);
   };
 
   const fontsReady = document.fonts ? document.fonts.ready : Promise.resolve();
