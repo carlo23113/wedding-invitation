@@ -5,8 +5,42 @@
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   const body = document.body;
-  body.classList.add("is-locked");
+  const root = document.documentElement;
   const curtain = document.getElementById("curtain");
+
+  /* ---------- Scroll lock until the curtain opens ---------- */
+  // Always start at the top, even on reload
+  if ("scrollRestoration" in history) history.scrollRestoration = "manual";
+  window.scrollTo(0, 0);
+
+  const SCROLL_KEYS = new Set([" ", "PageDown", "PageUp", "End", "Home", "ArrowDown", "ArrowUp", "Spacebar"]);
+  const blockEvent = (e) => e.preventDefault();
+  const blockKeys = (e) => {
+    if (SCROLL_KEYS.has(e.key)) e.preventDefault();
+  };
+  const pinTop = () => {
+    if (window.scrollY !== 0) window.scrollTo(0, 0);
+  };
+
+  function lockScroll() {
+    root.classList.add("is-locked");
+    body.classList.add("is-locked");
+    window.addEventListener("wheel", blockEvent, { passive: false });
+    window.addEventListener("touchmove", blockEvent, { passive: false });
+    window.addEventListener("keydown", blockKeys);
+    window.addEventListener("scroll", pinTop);
+  }
+
+  function unlockScroll() {
+    root.classList.remove("is-locked");
+    body.classList.remove("is-locked");
+    window.removeEventListener("wheel", blockEvent);
+    window.removeEventListener("touchmove", blockEvent);
+    window.removeEventListener("keydown", blockKeys);
+    window.removeEventListener("scroll", pinTop);
+  }
+
+  lockScroll();
 
   /* ---------- Split hero names into letters ---------- */
   document.querySelectorAll(".split").forEach((el) => {
@@ -31,7 +65,8 @@
     if (curtain.classList.contains("is-open")) return;
     curtain.classList.add("is-open");
     if (window.VelvetCurtain) window.VelvetCurtain.open();
-    body.classList.remove("is-locked");
+    // Let guests scroll once the drapes have parted
+    setTimeout(unlockScroll, reduceMotion ? 0 : 1400);
     // Start the hero entrance while the curtain is sweeping aside
     setTimeout(() => body.classList.add("is-revealed"), reduceMotion ? 0 : 700);
     setTimeout(() => {
