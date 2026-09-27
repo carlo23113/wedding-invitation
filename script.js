@@ -159,6 +159,20 @@
   );
   document.querySelectorAll(".reveal, .reveal-photo").forEach((el) => revealObserver.observe(el));
 
+  // Dogs hidden off the edge of their section can't be observed directly,
+  // so wake them when their section scrolls into view.
+  const dogObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.querySelectorAll(".dog--peek, .dog--rise").forEach((d) => d.classList.add("is-visible"));
+        dogObserver.unobserve(entry.target);
+      });
+    },
+    { threshold: 0.25 }
+  );
+  document.querySelectorAll("#story, #rsvp").forEach((el) => dogObserver.observe(el));
+
   /* ---------- Photos: fall back to a styled frame if one can't load ---------- */
   document.querySelectorAll(".photo img, .band__media img").forEach((img) => {
     const markMissing = () => img.parentElement.classList.add("is-missing");

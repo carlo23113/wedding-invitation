@@ -16,3 +16,10 @@ Sample photos in `images/` are from [Unsplash](https://unsplash.com) (free Unspl
 To use your own, replace the files keeping the same names:
 `gallery-1.jpg` … `gallery-7.jpg` (1 and 6 are tall portrait slots, 4 is a wide landscape slot)
 and `band.jpg` (a wide landscape photo for the full-width strip).
+
+## Dogs
+Sample dog photos in `images/dogs/` are from Unsplash with the backgrounds removed
+(transparent `.webp`). Replace them with cutouts of your own dogs using the same names:
+`corgi.webp` (peeks in from the right in Our Story), `golden.webp` (beside chapter IV),
+`shihtzu-1.webp` (lying on the Reception card), `shihtzu-2.webp` (with the Attire swatches)
+and `husky.webp` (rising from the bottom of RSVP).
