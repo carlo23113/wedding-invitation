@@ -10,3 +10,9 @@ on GitHub Pages, Netlify, Vercel, etc.
 - **Colors**: CSS variables at the top of `styles.css`.
 - **RSVP**: the form currently only shows a thank-you message; hook it up to Formspree,
   Google Forms or your own backend where the `TODO` is in `script.js`.
+
+## Photos
+Sample photos in `images/` are from [Unsplash](https://unsplash.com) (free Unsplash License).
+To use your own, replace the files keeping the same names:
+`gallery-1.jpg` … `gallery-7.jpg` (1 and 6 are tall portrait slots, 4 is a wide landscape slot)
+and `band.jpg` (a wide landscape photo for the full-width strip).
