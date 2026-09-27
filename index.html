@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Alex &amp; Jamie · May 8, 2027</title>
+  <meta name="description" content="You are invited to celebrate the wedding of Alex &amp; Jamie on May 8, 2027." />
+  <meta name="theme-color" content="#0b5d45" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Great+Vibes&family=Montserrat:wght@300;400;500&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="is-locked">
+
+  <!-- ============ CURTAIN ============ -->
+  <div class="curtain" id="curtain" aria-hidden="true">
+    <div class="curtain__valance"></div>
+    <div class="curtain__panel curtain__panel--left"></div>
+    <div class="curtain__panel curtain__panel--right"></div>
+
+    <div class="curtain__seal" id="curtainSeal">
+      <svg class="seal__ring" viewBox="0 0 120 120">
+        <circle cx="60" cy="60" r="56" />
+      </svg>
+      <span class="seal__monogram">A<em>&amp;</em>J</span>
+      <span class="seal__hint">opening</span>
+    </div>
+  </div>
+
+  <!-- ============ SCROLL PROGRESS ============ -->
+  <div class="progress" id="progress"></div>
+
+  <!-- ============ FLOATING PETALS ============ -->
+  <div class="petals" id="petals" aria-hidden="true"></div>
+
+  <!-- ============ NAV ============ -->
+  <nav class="nav" id="nav">
+    <a href="#home" class="nav__logo">A<em>&amp;</em>J</a>
+    <button class="nav__toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span>
+    </button>
+    <ul class="nav__links" id="navLinks">
+      <li><a href="#story">Our Story</a></li>
+      <li><a href="#details">Details</a></li>
+      <li><a href="#schedule">Schedule</a></li>
+      <li><a href="#attire">Attire</a></li>
+      <li><a href="#rsvp" class="nav__cta">RSVP</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <!-- ============ HERO ============ -->
+    <section class="hero" id="home">
+      <div class="hero__frame" aria-hidden="true">
+        <span class="corner corner--tl"></span>
+        <span class="corner corner--tr"></span>
+        <span class="corner corner--bl"></span>
+        <span class="corner corner--br"></span>
+      </div>
+
+      <div class="hero__content">
+        <p class="hero__eyebrow hero-anim" style="--d: 0.2s">Together with their families</p>
+
+        <h1 class="hero__names">
+          <span class="split" data-delay="0.6">Alex</span>
+          <span class="hero__amp hero-anim" style="--d: 1.3s">&amp;</span>
+          <span class="split" data-delay="1.5">Jamie</span>
+        </h1>
+
+        <svg class="hero__divider" viewBox="0 0 240 24" aria-hidden="true">
+          <path d="M0 12 H100" />
+          <path d="M140 12 H240" />
+          <path class="leaf" d="M120 3 C128 8 128 16 120 21 C112 16 112 8 120 3 Z" />
+        </svg>
+
+        <p class="hero__invite hero-anim" style="--d: 2.4s">request the pleasure of your company<br />at the celebration of their marriage</p>
+
+        <div class="hero__date hero-anim" style="--d: 2.7s">
+          <span class="hero__date-side">Saturday</span>
+          <span class="hero__date-main">
+            <span class="month">May</span>
+            <span class="day">08</span>
+            <span class="year">2027</span>
+          </span>
+          <span class="hero__date-side">4 o'clock</span>
+        </div>
+
+        <p class="hero__place hero-anim" style="--d: 3s">Manila, Philippines</p>
+      </div>
+
+      <a href="#countdown" class="scroll-cue hero-anim" style="--d: 3.4s" aria-label="Scroll down">
+        <span class="scroll-cue__line"></span>
+      </a>
+    </section>
+
+    <!-- ============ COUNTDOWN ============ -->
+    <section class="countdown section" id="countdown">
+      <p class="eyebrow reveal">Counting down to forever</p>
+      <div class="countdown__grid" id="countdownGrid">
+        <div class="cd reveal" style="--d: 0s">
+          <span class="cd__num" data-unit="days">000</span>
+          <span class="cd__label">Days</span>
+        </div>
+        <div class="cd reveal" style="--d: 0.1s">
+          <span class="cd__num" data-unit="hours">00</span>
+          <span class="cd__label">Hours</span>
+        </div>
+        <div class="cd reveal" style="--d: 0.2s">
+          <span class="cd__num" data-unit="minutes">00</span>
+          <span class="cd__label">Minutes</span>
+        </div>
+        <div class="cd reveal" style="--d: 0.3s">
+          <span class="cd__num" data-unit="seconds">00</span>
+          <span class="cd__label">Seconds</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ STORY ============ -->
+    <section class="story section" id="story">
+      <div class="section__head">
+        <p class="eyebrow reveal">Chapter One</p>
+        <h2 class="title reveal" style="--d: 0.1s">Our Story</h2>
+        <span class="rule reveal" style="--d: 0.2s"></span>
+      </div>
+
+      <div class="story__timeline">
+        <article class="moment reveal reveal--left">
+          <span class="moment__year">2019</span>
+          <h3>We Met</h3>
+          <p>A chance meeting over coffee turned into hours of conversation neither of us wanted to end.</p>
+        </article>
+        <article class="moment reveal reveal--right">
+          <span class="moment__year">2022</span>
+          <h3>We Grew</h3>
+          <p>Through new cities, small adventures and quiet Sundays, we became each other's home.</p>
+        </article>
+        <article class="moment reveal reveal--left">
+          <span class="moment__year">2026</span>
+          <h3>We Said Yes</h3>
+          <p>Under a sky full of stars, one question and one answer changed everything.</p>
+        </article>
+      </div>
+
+      <blockquote class="quote reveal">
+        <p>&ldquo;Whatever our souls are made of, his and mine are the same.&rdquo;</p>
+        <cite>Emily Brontë</cite>
+      </blockquote>
+    </section>
+
+    <!-- ============ DETAILS ============ -->
+    <section class="details section" id="details">
+      <div class="section__head">
+        <p class="eyebrow reveal">When &amp; Where</p>
+        <h2 class="title reveal" style="--d: 0.1s">The Details</h2>
+        <span class="rule reveal" style="--d: 0.2s"></span>
+      </div>
+
+      <div class="details__grid">
+        <article class="card reveal" style="--d: 0s">
+          <svg class="card__icon" viewBox="0 0 48 48" aria-hidden="true">
+            <path d="M24 4 L24 12 M20 8 L28 8 M12 44 V22 L24 14 L36 22 V44 Z M20 44 V34 A4 4 0 0 1 28 34 V44" />
+          </svg>
+          <h3>Ceremony</h3>
+          <p class="card__time">4:00 in the afternoon</p>
+          <p>San Agustin Church<br />General Luna St, Intramuros, Manila</p>
+          <a class="link" href="https://maps.google.com/?q=San+Agustin+Church+Intramuros" target="_blank" rel="noopener">View map</a>
+        </article>
+
+        <article class="card reveal" style="--d: 0.15s">
+          <svg class="card__icon" viewBox="0 0 48 48" aria-hidden="true">
+            <path d="M16 6 H22 L21 18 A4 4 0 0 1 17 18 Z M26 6 H32 L31 18 A4 4 0 0 1 27 18 Z M19 20 V36 M29 20 V36 M14 36 H24 M24 36 H34" />
+          </svg>
+          <h3>Reception</h3>
+          <p class="card__time">6:30 in the evening</p>
+          <p>The Garden Pavilion<br />Intramuros, Manila</p>
+          <a class="link" href="https://maps.google.com/?q=Intramuros+Manila" target="_blank" rel="noopener">View map</a>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============ SCHEDULE ============ -->
+    <section class="schedule section" id="schedule">
+      <div class="section__head">
+        <p class="eyebrow reveal">The Day</p>
+        <h2 class="title reveal" style="--d: 0.1s">Schedule</h2>
+        <span class="rule reveal" style="--d: 0.2s"></span>
+      </div>
+
+      <div class="schedule__wrap">
+      <span class="schedule__line" id="scheduleLine" aria-hidden="true"></span>
+      <ol class="schedule__list">
+        <li class="reveal"><time>3:30 PM</time><span>Guest Arrival</span></li>
+        <li class="reveal"><time>4:00 PM</time><span>Ceremony</span></li>
+        <li class="reveal"><time>5:30 PM</time><span>Cocktail Hour</span></li>
+        <li class="reveal"><time>6:30 PM</time><span>Dinner &amp; Toasts</span></li>
+        <li class="reveal"><time>8:00 PM</time><span>First Dance</span></li>
+        <li class="reveal"><time>11:00 PM</time><span>Farewell</span></li>
+      </ol>
+      </div>
+    </section>
+
+    <!-- ============ ATTIRE ============ -->
+    <section class="attire section" id="attire">
+      <div class="section__head">
+        <p class="eyebrow reveal">Dress Code</p>
+        <h2 class="title reveal" style="--d: 0.1s">Formal Attire</h2>
+        <span class="rule reveal" style="--d: 0.2s"></span>
+      </div>
+      <p class="attire__text reveal">We'd love to see you in shades of our palette.</p>
+      <div class="swatches">
+        <div class="swatch reveal" style="--d: 0s"><span class="swatch__dot" style="--c: #0b5d45"></span><span>Emerald</span></div>
+        <div class="swatch reveal" style="--d: 0.12s"><span class="swatch__dot" style="--c: #3f8f6f"></span><span>Sage</span></div>
+        <div class="swatch reveal" style="--d: 0.24s"><span class="swatch__dot" style="--c: #f6f1e4"></span><span>Ivory</span></div>
+        <div class="swatch reveal" style="--d: 0.36s"><span class="swatch__dot" style="--c: #ffffff"></span><span>White</span></div>
+      </div>
+    </section>
+
+    <!-- ============ RSVP ============ -->
+    <section class="rsvp section" id="rsvp">
+      <div class="section__head">
+        <p class="eyebrow eyebrow--light reveal">Kindly reply by March 31, 2027</p>
+        <h2 class="title title--light reveal" style="--d: 0.1s">RSVP</h2>
+        <span class="rule rule--light reveal" style="--d: 0.2s"></span>
+      </div>
+
+      <form class="rsvp__form reveal" id="rsvpForm" novalidate>
+        <div class="field">
+          <input type="text" id="name" name="name" placeholder=" " required />
+          <label for="name">Full name</label>
+        </div>
+        <div class="field">
+          <input type="email" id="email" name="email" placeholder=" " required />
+          <label for="email">Email</label>
+        </div>
+
+        <div class="choice" role="radiogroup" aria-label="Attendance">
+          <label><input type="radio" name="attending" value="yes" checked /><span>Joyfully accepts</span></label>
+          <label><input type="radio" name="attending" value="no" /><span>Regretfully declines</span></label>
+        </div>
+
+        <div class="field">
+          <input type="number" id="guests" name="guests" min="1" max="5" value="1" placeholder=" " />
+          <label for="guests">Number of guests</label>
+        </div>
+        <div class="field">
+          <textarea id="message" name="message" rows="3" placeholder=" "></textarea>
+          <label for="message">A note for the couple</label>
+        </div>
+
+        <button type="submit" class="btn"><span>Send Reply</span></button>
+        <p class="rsvp__thanks" id="rsvpThanks" role="status"></p>
+      </form>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <p class="footer__monogram reveal">A<em>&amp;</em>J</p>
+    <p class="footer__date reveal" style="--d: 0.1s">05 · 08 · 2027</p>
+    <p class="footer__tag reveal" style="--d: 0.2s">#AlexAndJamieForever</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
